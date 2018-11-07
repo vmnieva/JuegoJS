@@ -11,12 +11,18 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="jquery-3.3.1.js"></script>
         <script src="Personaje.js"></script>
+        <script>
+            $(document).ready(function (){
+                $("#subJugar").click(almacenarNJug);
+            });
+
+        </script>
     </head>
     <body>
         <h1>Nombre de juego</h1>
         <form action="juego.html" method="post">
             <label for="inpNumPj">Numero de jugadores: </label>
-            <input type="number" name="inpNumPj" id="inpNumPj">
+            <input type="number" name="inpNumPj" id="inpNumPj" placeholder="de 1 a 4 Jugadores" min="1" max="4" value="1">
             <input type="submit" name="subJugar" value="Jugar">
         </form>
     </body>

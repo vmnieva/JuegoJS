@@ -5,38 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <script src="jquery-3.3.1.js"></script>
     <script src="Personaje.js"></script>
-    <title>Document</title>
+    <script>
+        $(document).ready(function() {
+        var njug = localStorage.getItem("njugs");
+        genDivJugs(njug);
+        });
+    </script>
+    
 </head>
 
 <body>
     <h1>NOMBRE DE JUEGO</h1>
     <h2>Batalla</h2>
     <div id="divMonster">
+        <h3>Enemigo</h3>
         <img src="" alt="">
         <fieldset disabled="disabled">
             <legend>Información</legend>
-            <label for=""></label>
-            <input type="text" name="infoNombre" id="infoNombre">
-            <label for=""></label>
-            <input type="text" name="infoVida" id="infoVida">
-            <label for=""></label>
-            <input type="text" name="infoFuerza" id="infoFuerza">
+            <label for="">Nombre: </label>
+            <input type="text" name="infoNombre" id="infoNombre"><br>
+            <label for="">Vida: </label>
+            <input type="text" name="infoVida" id="infoVida"><br>
+            <label for="">Fuerza: </label>
+            <input type="text" name="infoFuerza" id="infoFuerza"><br>
         </fieldset>
     </div>
-    <div id="divPj1" hidden>
+    <div></div>
+    <div id="divPj1" >
+        <h3>Personaje</h3>
         <img src="" alt="">
         <fieldset disabled="disabled">
             <legend>Información</legend>
-            <label for=""></label>
-            <input type="text" name="infoNombre" id="infoNombre">
-            <label for=""></label>
-            <input type="text" name="infoVida" id="infoVida">
-            <label for=""></label>
-            <input type="text" name="infoFuerza" id="infoFuerza">
+            <label for="">Nombre</label>
+            <input type="text" name="infoNombrePj1" id="infoNombrePj1"><br>
+            <label for="">Vida</label>
+            <input type="text" name="infoVidaPj1" id="infoVidaPj1"><br>
+            <label for="">Fuerza</label>
+            <input type="text" name="infoFuerzaPj1" id="infoFuerzaPj1"><br>
         </fieldset>
+        <img src="" alt="" id="imgdado1">
     </div>
+    
+    
 
 </body>
 
