@@ -3,3 +3,9 @@ function Personaje(nombre, vida, fuerza){
     fuer = fuerza;
     vid = vida;
 }
+
+function Atacar(daño1, vidajefe){
+    vidajefe = daño1 - vidajefe;
+    return vidajefe;
+}
+
