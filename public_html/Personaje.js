@@ -1,7 +1,7 @@
-function Personaje(nombre, vida, fuerza){
-    nomb = nombre;
-    fuer = fuerza;
-    vid = vida;
+function Personaje(nomb, vid, fuer){
+    nombre = nomb;
+    fuerza = fuer;
+    vida = vid;
 }
 
 function Atacar(daño1, vida1){
