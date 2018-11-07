@@ -37,23 +37,10 @@ function almacenarNJug() {
  */
 function genDivJugs(njugs) {
     for (let index = 1; index < njugs; index++) {
-        var infoj = "<div id='divPj'" + index + "'> <h3>Personaje</h3> <img src='' alt=''><fieldset disabled='disabled'><legend>Información</legend><label for='infoNombrePj1'>Nombre</label><input type='text' name='infoNombrePj1' id='infoNombrePj1'><br><label for='infoVidaPj1'>Vida</label><input type='text' name='infoVidaPj1' id='infoVidaPj1'><br><label for='infoFuerzaPj1'>Fuerza</label><input type='text' name='infoFuerzaPj1' id='infoFuerzaPj1'><br></fieldset>"
-        switch (index) {
-            case 1:
-                var im = "<img src='' alt=''>"
-                break;
-        
-            default:
-                break;
-        }
-            
-            
-            
-            
-        
-        <img src="" alt="" id="imgdado1">
-    </div>
-
+        var infoj = "<div id='divPj'" + index + "'> <h3>Personaje</h3>";
+        infoj = infoj + "<img src='' alt='' id='imgPj" + index + "'>";
+        infoj = infoj + "<fieldset disabled='disabled'><legend>Información</legend><label for='infoNombrePj" + index + "'>Nombre</label><input type='text' name='infoNombrePj" + index + "' id='infoNombrePj" + index + "' value=''><br><label for='infoVidaPj" + index + "'>Vida</label><input type='text' name='infoVidaPj" + index + "' id='infoVidaPj" + index + "'><br><label for='infoFuerzaPj" + index + "'>Fuerza</label><input type='text' name='infoFuerzaPj" + index + "' id='infoFuerzaPj" + index + "'><br></fieldset></div>";
+        document.getElementById("contendorpj").innerHTML = infoj;
     }
 }
 
