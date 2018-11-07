@@ -4,8 +4,8 @@ function Personaje(nombre, vida, fuerza){
     vid = vida;
 }
 
-function Atacar(daño1, vidajefe){
-    vidajefe = daño1 - vidajefe;
-    return vidajefe;
+function Atacar(daño1, vida1){
+    vida1 = vida1 - daño1;
+    return vida1;
 }
 
