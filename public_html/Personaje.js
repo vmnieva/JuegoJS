@@ -29,17 +29,23 @@ function almacenarNJug() {
     localStorage.setItem("njugs", $("#inpNumPj").val());
 }
 
+function generarPersonajes(){
+    personajes = new Array();
+    i = localStorage.getItem("njugs", $("#inpNumPj").val());
+    for (var f = 0; f < i; f++) {
+        //meter personaje en el array;
+    }
+}
+
 /**
- * @author willy
+ * 
  * @param {type} i
  * @returns {undefined}
+ * @author willy
  */
 function muertePersonaje(i){
     $("#" + i).attr("hidden", "false");
 }
-
-
-
 
 /**
  * 
