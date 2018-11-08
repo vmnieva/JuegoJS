@@ -30,8 +30,9 @@ function almacenarNJug() {
 }
 
 /**
- * 
  * @author willy
+ * @param {type} i
+ * @returns {undefined}
  */
 function muertePersonaje(i){
     $("#" + i).attr("hidden", "false");
