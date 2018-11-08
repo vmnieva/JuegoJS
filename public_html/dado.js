@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 
+/**
+ * 
+ * @returns {undefined}
+ * @Rafael
+ */
 function tirar_dado(){
     var i1 = new Image();
     i1.src="Imagenes/Caras-dado/dado1.png";
