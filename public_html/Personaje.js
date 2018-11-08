@@ -29,6 +29,16 @@ function almacenarNJug() {
     localStorage.setItem("njugs", $("#inpNumPj").val());
 }
 
+/**
+ * 
+ * @author willy
+ */
+function muertePersonaje(i){
+    $("#" + i).attr("hidden", "false");
+}
+
+
+
 
 /**
  * 
