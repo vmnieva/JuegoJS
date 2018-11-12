@@ -65,8 +65,8 @@ function muertePersonaje(i) {
 function genDivJugs(njugs) {
     for (let index = 1; index <= njugs; index++) {
         var infoj = "<div id='divPj" + index + "'> <h3>Personaje</h3>";
-        infoj = infoj + "<img src='' alt='' id='imgPj" + index + "'>";
-        infoj = infoj + "<fieldset disabled='disabled'><legend>Información</legend><label for='infoNombrePj" + index + "'>Nombre</label><input type='text' name='infoNombrePj" + index + "' id='infoNombrePj" + index + "' value=''><br><label for='infoVidaPj" + index + "'>Vida</label><input type='text' name='infoVidaPj" + index + "' id='infoVidaPj" + index + "'><br><label for='infoFuerzaPj" + index + "'>Fuerza</label><input type='text' name='infoFuerzaPj" + index + "' id='infoFuerzaPj" + index + "'><br></fieldset></div>";
+        infoj = infoj + "<img src='Imagenes/personajes/" + index + ".png' alt='Personaje" + index + "' id='imgPj" + index + "'>";
+        infoj = infoj + "<fieldset disabled='disabled'><legend>Información</legend><label for='infoNombrePj" + index + "'>Nombre: </label><input type='text' name='infoNombrePj" + index + "' id='infoNombrePj" + index + "' value=''><br><br><label for='infoVidaPj" + index + "'>Vida: </label><input type='text' name='infoVidaPj" + index + "' id='infoVidaPj" + index + "'><br><br><label for='infoFuerzaPj" + index + "'>Fuerza: </label><input type='text' name='infoFuerzaPj" + index + "' id='infoFuerzaPj" + index + "'><br><br></fieldset></div>";
         document.getElementById("contenedorpj").innerHTML += infoj;
     }
 }
