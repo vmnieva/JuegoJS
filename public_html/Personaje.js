@@ -5,7 +5,7 @@
  * @param {*} fuer 
  * @author Nieva
  */
-function Personaje(nomb, vid, fuer){
+function Personaje(nomb, vid, fuer) {
     nombre = nomb;
     fuerza = fuer;
     vida = vid;
@@ -17,7 +17,7 @@ function Personaje(nomb, vid, fuer){
  * @param {*} vida1 
  * @author Nieva
  */
-function Atacar(daño1, vida1){
+function Atacar(daño1, vida1) {
     vida1 = vida1 - daño1;
     return vida1;
 }
@@ -29,11 +29,21 @@ function almacenarNJug() {
     localStorage.setItem("njugs", $("#inpNumPj").val());
 }
 
-function generarPersonajes(){
+/**
+ * 
+ * @return {undefined}
+ * @author willy
+ */
+function generarPersonajes() {
     personajes = new Array();
     i = localStorage.getItem("njugs", $("#inpNumPj").val());
     for (var f = 0; f < i; f++) {
-        //meter personaje en el array;
+        var nombre = $("#infoNombrePj" + i);
+        var vida = $("#infoVidaPj" + i);
+        var fuerza = $("#infoFuerzaPj" + i);
+
+        var jugador = Personaje(nombre, vida, fuerza);
+        personajes[f] = jugador;
     }
 }
 
@@ -43,7 +53,7 @@ function generarPersonajes(){
  * @returns {undefined}
  * @author willy
  */
-function muertePersonaje(i){
+function muertePersonaje(i) {
     $("#" + i).attr("hidden", "false");
 }
 
