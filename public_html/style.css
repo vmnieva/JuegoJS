@@ -1,0 +1,19 @@
+#contenedorpj {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+#divMonster {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+[id*= "divPj"] {
+    width: 200px;
+}
+img {
+    height: 200px;
+}
+fieldset {
+    width: 20%;
+}
