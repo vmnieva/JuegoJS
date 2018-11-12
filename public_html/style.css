@@ -1,15 +1,15 @@
 #contenedorpj {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
 }
 #divMonster {
     width: 50%;
-    display: flex;
     margin-left: auto;
     margin-right: auto;
 }
 [id*= "divPj"] {
-    width: 25%;
+    width: 200px;
 }
 img {
     height: 200px;
