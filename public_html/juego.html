@@ -13,7 +13,13 @@
         $(document).ready(function() {
         var njug = localStorage.getItem("njugs");
         genDivJugs(njug);
+        $('#dado1').onclick(realizarTirada());
+        $('#dado2').onclick(realizarTirada());
+        $('#dado3').onclick(realizarTirada());
+        $('#dado4').onclick(realizarTirada());
         });
+
+        
     </script>
     
 </head>
