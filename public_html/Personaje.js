@@ -36,7 +36,7 @@ function almacenarNJug() {
  */
 function generarPersonajes() {
     personajes = new Array();
-    i = localStorage.getItem("njugs", $("#inpNumPj").val());
+    i = localStorage.getItem("njugs");
     for (var f = 0; f < i; f++) {
         var nombre = $("#infoNombrePj" + i);
         var vida = $("#infoVidaPj" + i);
@@ -46,9 +46,20 @@ function generarPersonajes() {
         personajes[f] = jugador;
     }
 }
-
+/**
+ * 
+ */
 function rellenarDivsJugs(){
-    
+    njugs = localStorage.getItem('njugs');
+    for (let index = 0; index < njugs; index++) {
+        let p = new Personaje();
+        p = localStorage.getItem('p'+index);
+        $('#infoNombrePj'+index).val = p.nombre;
+        $('#infoVidaPj'+index).val = p.vida;
+        $('#infoFuerzaPj'+index).val = p.fuerza;
+
+        
+    }
 }
 
 /**
@@ -72,8 +83,14 @@ function genDivJugs(njugs) {
         var vida = parseInt(Math.random()*100+100);
         var infoj = "<div id='divPj" + index + "'> <h3>Personaje</h3>";
         infoj = infoj + "<img src='Imagenes/personajes/" + index + ".png' alt='Personaje" + index + "' id='imgPj" + index + "'>";
-        infoj = infoj + "<fieldset ><legend>Información</legend><label for='infoNombrePj" + index + "'>Nombre: </label><input type='text' name='infoNombrePj" + index + "' id='infoNombrePj" + index + "' value='Jugador " + index + "'><br><br><label for='infoVidaPj" + index + "'>Vida: </label><input type='text' name='infoVidaPj" + index + "' id='infoVidaPj" + index + "' value='" + vida + "' ><br><br><label for='infoFuerzaPj" + index + "'>Fuerza: </label><input type='text' name='infoFuerzaPj" + index + "' id='infoFuerzaPj" + index + "' value='" + fuerza + "'><br><br></fieldset></div>";
+        infoj = infoj + "<fieldset ><legend>Información</legend><label for='infoNombrePj" + index + "'>Nombre: </label><input type='text' name='infoNombrePj" + index + "' id='infoNombrePj" + index + "' value='Jugador " + index + "'><br><br><label for='infoVidaPj" + index + "'>Vida: </label><input type='text' name='infoVidaPj" + index + "' id='infoVidaPj" + index + "' value='" + vida + "' ><br><br><label for='infoFuerzaPj" + index + "'>Fuerza: </label><input type='text' name='infoFuerzaPj" + index + "' id='infoFuerzaPj" + index + "' value='" + fuerza + "'><br><br></fieldset><img src='Imagenes/Caras-dado/Dadocompleto.png' id='dado" + index + "'></div>";
         document.getElementById("contenedorpj").innerHTML += infoj;
     }
+}
+
+
+
+function realizarTirada() {
+    return parseInt(Math.random * 6 + 1);
 }
 
