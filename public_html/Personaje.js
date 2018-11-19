@@ -87,25 +87,25 @@ function genDivJugs(njugs) {
 }
 
 function realizarTirada1() {
-    var n = parseInt((Math.random() * 6)+1);
+    var n = parseInt((Math.random() * 6) + 1);
     $("#dado1").attr("src", "Imagenes/Caras-dado/dado" + n + ".png");
-    document.getElementById("tirada1").value =  n;
+    document.getElementById("tirada1").value = n;
 }
 
 function realizarTirada2() {
-    var n = parseInt((Math.random() * 6)+1);
-    $("#dado2").attr("src", "Imagenes/Caras-dado/dado"+n+".png");
-    document.getElementById("tirada2").value =  n;
+    var n = parseInt((Math.random() * 6) + 1);
+    $("#dado2").attr("src", "Imagenes/Caras-dado/dado" + n + ".png");
+    document.getElementById("tirada2").value = n;
 }
 
 function realizarTirada3() {
-    var n = parseInt((Math.random() * 6)+1);
-    $("#dado3").attr("src", "Imagenes/Caras-dado/dado"+n+".png");
-    document.getElementById("tirada3").value =  n;
+    var n = parseInt((Math.random() * 6) + 1);
+    $("#dado3").attr("src", "Imagenes/Caras-dado/dado" + n + ".png");
+    document.getElementById("tirada3").value = n;
 }
 
 function realizarTirada4() {
-    var n = parseInt((Math.random() * 6)+1);
-    $("#dado4").attr("src", "Imagenes/Caras-dado/dado"+n+".png");
-    document.getElementById("tirada4").value =  n;
+    var n = parseInt((Math.random() * 6) + 1);
+    $("#dado4").attr("src", "Imagenes/Caras-dado/dado" + n + ".png");
+    document.getElementById("tirada4").value = n;
 }
