@@ -57,8 +57,6 @@ function rellenarDivsJugs() {
         $('#infoNombrePj' + index).val = p.nombre;
         $('#infoVidaPj' + index).val = p.vida;
         $('#infoFuerzaPj' + index).val = p.fuerza;
-
-
     }
 }
 
