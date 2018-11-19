@@ -1,56 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Juego</title>
-    <script src="jquery-3.3.1.js"></script>
-    <script src="Personaje.js"></script>
-    <script>
-        $(document).ready(function() {
-        var njug = localStorage.getItem("njugs");
-        genDivJugs(njug);
-        $('#dado1').onclick(realizarTirada());
-        $('#dado2').onclick(realizarTirada());
-        $('#dado3').onclick(realizarTirada());
-        $('#dado4').onclick(realizarTirada());
-        });
-
-        
-    </script>
-    
-</head>
-
-<body>
-    <h1>NOMBRE DE JUEGO</h1>
-    <h2>Batalla</h2>
-    <div id="divMonster">
-        <h3>Enemigo</h3>
-        <img src="Imagenes/personajes/berserker.png" alt="Monstruo">
-        <fieldset disabled="disabled">
-            <legend>Información</legend>
-            <label for="infoNombre">Nombre: </label>
-            <input type="text" name="infoNombre" id="infoNombre" value="Berserker"><br>
-            <label for="infoVida">Vida: </label>
-            <input type="text" name="infoVida" id="infoVida" value="150"><br>
-            <label for="infoFuerza">Fuerza: </label>
-            <input type="text" name="infoFuerza" id="infoFuerza" value="5"><br>
-        </fieldset>
-    </div>
-    <div></div>
-    
-    <div id="contenedorpj">
-        
-    </div>
-    
-    <div id="dado">
-        
-        
-    </div>
-    
-</body>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Fantasia Fatal VII</title>
+        <script src="jquery-3.3.1.js"></script>
+        <script src="Personaje.js"></script>
+        <script>
+            $(document).ready(function () {
+                var njug = localStorage.getItem("njugs");
+                genDivJugs(njug);
+                $('#dado1').click(realizarTirada1);
+                $('#dado2').click(realizarTirada2);
+                $('#dado3').click(realizarTirada3);
+                $('#dado4').click(realizarTirada4);
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Fantasia Fatal VII</h1>
+        <h2>Batalla</h2>
+        <div id="divMonster">
+            <h3>Enemigo</h3>
+            <img src="Imagenes/personajes/berserker.png" alt="Monstruo">
+            <fieldset disabled="disabled">
+                <legend>Información</legend>
+                <label for="infoNombre">Nombre: </label>
+                <input type="text" name="infoNombre" id="infoNombre" value="Berserker"><br>
+                <label for="infoVida">Vida: </label>
+                <input type="text" name="infoVida" id="infoVida" value="150"><br>
+                <label for="infoFuerza">Fuerza: </label>
+                <input type="text" name="infoFuerza" id="infoFuerza" value="5"><br>
+            </fieldset>
+        </div>
+        <div id="contenedorpj">
+        </div>
+    </body>
 </html>

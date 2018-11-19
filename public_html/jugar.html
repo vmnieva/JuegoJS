@@ -9,17 +9,13 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <script src="dado.js"></script>
+        <script src="dado.js"></script>
     </head>
     <body>
-            
-        
         <div id="dado">
             <form name="jugar" action="jugar.html">
                 <script>
-                    
                     var aleatorio = tirar_dado();
-                    
                     switch (aleatorio) {
                         case 1:
                             document.write('<img src="Imagenes/Caras-dado/dado1.png"  id="1" width="150" height="150" alt="dado1"/> <br>');
@@ -43,16 +39,10 @@ and open the template in the editor.
                             document.write('<img src="Imagenes/Caras-dado/dado6.png" id="6" width="150" height="150" alt="dado6"/> <br>');
                             break;
                     }
-                            
-                
-                document.write("<input type='text' name='numdado' value='" + aleatorio + "' readonly='readonly' /><br>");
+                    document.write("<input type='text' name='numdado' value='" + aleatorio + "' readonly='readonly' /><br>");
                 </script>
                 <input type="submit" value="Tirar" name="tirar" />
-                
             </form>
-            
-            
         </div>
-        
     </body>
 </html>
