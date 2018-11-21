@@ -73,7 +73,7 @@ function rellenarDivsJugs() {
  * @author willy
  */
 function muertePersonaje(i) {
-    $("#" + i).attr("hidden", "false");
+    $("#divPj" + i).attr("hidden", "false");
 }
 
 /**
