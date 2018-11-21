@@ -1,3 +1,5 @@
+var per = new Array();
+
 /**
  * 
  * @param {*} nomb 
@@ -6,9 +8,9 @@
  * @author Nieva
  */
 function Personaje(nomb, vid, fuer) {
-    nombre = nomb;
-    fuerza = fuer;
-    vida = vid;
+    this.nombre = nomb;
+    this.fuerza = fuer;
+    this.vida = vid;
 }
 
 /**
@@ -17,12 +19,14 @@ function Personaje(nomb, vid, fuer) {
  * @param {*} vida1 
  * @author Nieva
  */
-function Atacar(daño1, vida1) {
+function atacar(daño1, vida1) {
     vida1 = vida1 - daño1;
     return vida1;
 }
 
 /**
+ * 
+ * @returns {undefined}
  * @author Manuel
  */
 function almacenarNJug() {
@@ -35,17 +39,19 @@ function almacenarNJug() {
  * @author willy
  */
 function generarPersonajes() {
-    personajes = new Array();
+    var personajes = new Array();
     i = localStorage.getItem("njugs");
     for (var f = 0; f < i; f++) {
-        var nombre = $("#infoNombrePj" + i);
-        var vida = $("#infoVidaPj" + i);
-        var fuerza = $("#infoFuerzaPj" + i);
+        var nombre = $("#infoNombrePj" + i).val();
+        var vida = $("#infoVidaPj" + i).val();
+        var fuerza = $("#infoFuerzaPj" + i).val();
 
         var jugador = Personaje(nombre, vida, fuerza);
+        alert(jugador);
         personajes[f] = jugador;
     }
 }
+
 /**
  * 
  */
@@ -76,13 +82,36 @@ function muertePersonaje(i) {
  * @author Manuel 
  */
 function genDivJugs(njugs) {
+
     for (let index = 1; index <= njugs; index++) {
         var fuerza = parseInt(Math.random() * 5 + 5);
         var vida = parseInt(Math.random() * 100 + 100);
-        var infoj = "<div id='divPj" + index + "'> <h3>Personaje</h3>";
+        var nombre = "Personaje" + index;
+        var infoj = "<div id='divPj" + index + "'>";
+        infoj = infoj + "<h3>Personaje</h3>";
         infoj = infoj + "<img src='Imagenes/personajes/" + index + ".png' alt='Personaje" + index + "' id='imgPj" + index + "'>";
-        infoj = infoj + "<fieldset ><legend>Información</legend><label for='infoNombrePj" + index + "'>Nombre: </label><input type='text' name='infoNombrePj" + index + "' id='infoNombrePj" + index + "' value='Jugador " + index + "'><br><br><label for='infoVidaPj" + index + "'>Vida: </label><input type='text' name='infoVidaPj" + index + "' id='infoVidaPj" + index + "' value='" + vida + "' ><br><br><label for='infoFuerzaPj" + index + "'>Fuerza: </label><input type='text' name='infoFuerzaPj" + index + "' id='infoFuerzaPj" + index + "' value='" + fuerza + "'><br><br></fieldset><img src='Imagenes/Caras-dado/Dadocompleto.png' id='dado" + index + "'><div><input id='tirada" + index + "' value = '0'></div></div>";
+        infoj = infoj + "<fieldset >";
+        infoj = infoj + "<legend>Información</legend>";
+        infoj = infoj + "<label for='infoNombrePj" + index + "'>Nombre: </label>";
+        infoj = infoj + "<input type='text' name='infoNombrePj" + index + "' id='infoNombrePj" + index + "' value='Jugador " + index + "'>";
+        infoj = infoj + "<br>";
+        infoj = infoj + "<br>";
+        infoj = infoj + "<label for='infoVidaPj" + index + "'>Vida: </label>";
+        infoj = infoj + "<input type='text' name='infoVidaPj" + index + "' id='infoVidaPj" + index + "' value='" + vida + "' >";
+        infoj = infoj + "<br>";
+        infoj = infoj + "<br>";
+        infoj = infoj + "<label for='infoFuerzaPj" + index + "'>Fuerza: </label>";
+        infoj = infoj + "<input type='text' name='infoFuerzaPj" + index + "' id='infoFuerzaPj" + index + "' value='" + fuerza + "'>";
+        infoj = infoj + "<br>";
+        infoj = infoj + "<br>";
+        infoj = infoj + "</fieldset>";
+        infoj = infoj + "<img src='Imagenes/Caras-dado/Dadocompleto.png' id='dado" + index + "'>";
+        infoj = infoj + "<div><input id='tirada" + index + "' value = '0'></div>";
+        infoj = infoj + "</div>";
         document.getElementById("contenedorpj").innerHTML += infoj;
+        
+        var jugador = new Personaje(nombre, vida, fuerza);
+        per[index] = jugador;
     }
 }
 
@@ -90,6 +119,7 @@ function realizarTirada1() {
     var n = parseInt((Math.random() * 6) + 1);
     $("#dado1").attr("src", "Imagenes/Caras-dado/dado" + n + ".png");
     document.getElementById("tirada1").value = n;
+    atacar();
 }
 
 function realizarTirada2() {
