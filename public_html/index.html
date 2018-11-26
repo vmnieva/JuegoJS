@@ -5,25 +5,28 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>Fantasia Fatal VII</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="jquery-3.3.1.js"></script>
-        <script src="Personaje.js"></script>
-        <script>
-            $(document).ready(function (){
-                $("#subJugar").click(almacenarNJug);
-            });
-        </script>
-    </head>
-    <body>
-        <h1>Nombre de juego</h1>
-        <form action="juego.html">
-            <label for="inpNumPj">Numero de jugadores: </label>
-            <input type="number" name="inpNumPj" id="inpNumPj" placeholder="de 1 a 4 Jugadores" min="1" max="4" value="1">
-            <input type="submit" id="subJugar" value="Jugar">
-        </form>
-    </body>
+
+<head>
+	<title>Fantasia Fatal VII</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="jquery-3.3.1.js"></script>
+	<script src="Personaje.js"></script>
+	<script>
+		$(document).ready(function (){
+		                $("#subJugar").click(almacenarNJug);
+		            });
+	</script>
+</head>
+
+<body>
+	<h1>Nombre de juego</h1>
+	<form action="juego.html">
+		<label for="inpNumPj">Numero de jugadores:</label>
+		<input type="number" name="inpNumPj" id="inpNumPj" placeholder="de 1 a 4 Jugadores" min="1" max="4" value="1">
+		<input type="submit" id="subJugar" value="Jugar">
+	</form>
+</body>
+
 </html>
