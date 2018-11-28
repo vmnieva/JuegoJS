@@ -95,102 +95,158 @@ function genDivJugs(njugs) {
 }
 
 function realizarTirada1() {
+        
 	var result;
 	var n = parseInt((Math.random() * 6) + 1);
 	$("#dado1").attr("src", "Imagenes/Caras-dado/dado" + n + ".png");
 	document.getElementById("tirada1").value = n;
-	var fuerzapj = parseInt($("#infoFuerzaPj1").val()) + (n);
-	var vidapj = parseInt($("#infoVidaPj1").val());
-	var fuerzam = parseInt($("#infoFuerza").val()) + (n);
-	var vidam = parseInt($("#infoVida").val());
-	if (atacar(fuerzapj, vidam) <= 0) {
-		document.getElementById("infoVida").value = 0;
+        var fuerzapj = (per[1].fuerza) + n;
+        var fuerzam = (per[0].fuerza) + n
+	if (atacar(fuerzapj, per[0].vida) <= 0) {
+                per[0].vida = 0;
+		document.getElementById("infoVida").value = per[0].vida;
                 alert("Has ganado");
                 $("#divMonster").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
-                
 	} else {
-		result = atacar(fuerzapj, vidam);
-		document.getElementById("infoVida").value = result;
-	} if (atacar(fuerzam, vidapj) <= 0) {
-		document.getElementById("infoVidaPj1").value = 0;
+		result = atacar(fuerzapj, per[0].vida);
+                per[0].vida = result;
+		document.getElementById("infoVida").value = per[0].vida;
+	} if (atacar(fuerzam, per[1].vida) <= 0) {
+                per[1].vida = 0;
+		document.getElementById("infoVidaPj1").value = per[1].vida;
 		$("#divPj1").html("Jugador 1 ha muerto");
 	} else {
-		result = atacar(fuerzam, vidapj);
-		document.getElementById("infoVidaPj1").value = result;
+		result = atacar(fuerzam, per[1].vida);
+                per[1].vida = result;
+		document.getElementById("infoVidaPj1").value = per[1].vida;
 	}
+        
+        var muertos;
+        for (var i = 1; i < per.length; i++) {
+            if (per[1].vida === 0) {
+                muertos = true;
+            } else {
+                muerto = false;
+            }
+        }
+        if (muertos === true) {
+            $("#contenedorpj").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
+        }
 }
 
 function realizarTirada2() {
+	var result;
 	var n = parseInt((Math.random() * 6) + 1);
 	$("#dado2").attr("src", "Imagenes/Caras-dado/dado" + n + ".png");
 	document.getElementById("tirada2").value = n;
-        var fuerzapj = parseInt($("#infoFuerzaPj2").val()) + (n);
-	var vidapj = parseInt($("#infoVidaPj2").val());
-	var fuerzam = parseInt($("#infoFuerza").val()) + (n);
-	var vidam = parseInt($("#infoVida").val());
-	if (atacar(fuerzapj, vidam) <= 0) {
-		document.getElementById("infoVida").value = 0;
+        var fuerzapj = (per[2].fuerza) + n;
+        var fuerzam = (per[0].fuerza) + n
+	if (atacar(fuerzapj, per[0].vida) <= 0) {
+                per[0].vida = 0;
+		document.getElementById("infoVida").value = per[0].vida;
                 alert("Has ganado");
                 $("#divMonster").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
-                
 	} else {
-		result = atacar(fuerzapj, vidam);
-		document.getElementById("infoVida").value = result;
-	} if (atacar(fuerzam, vidapj) <= 0) {
-		document.getElementById("infoVidaPj2").value = 0;
+		result = atacar(fuerzapj, per[0].vida);
+                per[0].vida = result;
+		document.getElementById("infoVida").value = per[0].vida;
+	} if (atacar(fuerzam, per[2].vida) <= 0) {
+                per[2].vida = 0;
+		document.getElementById("infoVidaPj2").value = per[2].vida;
 		$("#divPj2").html("Jugador 2 ha muerto");
 	} else {
-		result = atacar(fuerzam, vidapj);
-		document.getElementById("infoVidaPj2").value = result;
+		result = atacar(fuerzam, per[2].vida);
+                per[2].vida = result;
+		document.getElementById("infoVidaPj2").value = per[2].vida;
 	}
+        
+        var muertos;
+        for (var i = 1; i < per.length; i++) {
+            if (per[1].vida === 0) {
+                muertos = true;
+            } else {
+                muerto = false;
+            }
+        }
+        if (muertos === true) {
+            $("#contenedorpj").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
+        }
 }
 
 function realizarTirada3() {
+	var result;
 	var n = parseInt((Math.random() * 6) + 1);
 	$("#dado3").attr("src", "Imagenes/Caras-dado/dado" + n + ".png");
 	document.getElementById("tirada3").value = n;
-        var fuerzapj = parseInt($("#infoFuerzaPj3").val()) + (n);
-	var vidapj = parseInt($("#infoVidaPj3").val());
-	var fuerzam = parseInt($("#infoFuerza").val()) + (n);
-	var vidam = parseInt($("#infoVida").val());
-	if (atacar(fuerzapj, vidam) <= 0) {
-		document.getElementById("infoVida").value = 0;
+        var fuerzapj = (per[3].fuerza) + n;
+        var fuerzam = (per[0].fuerza) + n
+	if (atacar(fuerzapj, per[0].vida) <= 0) {
+                per[0].vida = 0;
+		document.getElementById("infoVida").value = per[0].vida;
                 alert("Has ganado");
                 $("#divMonster").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
-                
 	} else {
-		result = atacar(fuerzapj, vidam);
-		document.getElementById("infoVida").value = result;
-	} if (atacar(fuerzam, vidapj) <= 0) {
-		document.getElementById("infoVidaPj3").value = 0;
+		result = atacar(fuerzapj, per[0].vida);
+                per[0].vida = result;
+		document.getElementById("infoVida").value = per[0].vida;
+	} if (atacar(fuerzam, per[3].vida) <= 0) {
+                per[3].vida = 0;
+		document.getElementById("infoVidaPj3").value = per[3].vida;
 		$("#divPj3").html("Jugador 3 ha muerto");
 	} else {
-		result = atacar(fuerzam, vidapj);
-		document.getElementById("infoVidaPj3").value = result;
+		result = atacar(fuerzam, per[3].vida);
+                per[3].vida = result;
+		document.getElementById("infoVidaPj3").value = per[3].vida;
 	}
+        
+        var muertos;
+        for (var i = 1; i < per.length; i++) {
+            if (per[1].vida === 0) {
+                muertos = true;
+            } else {
+                muerto = false;
+            }
+        }
+        if (muertos === true) {
+            $("#contenedorpj").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
+        }
 }
 
 function realizarTirada4() {
+	var result;
 	var n = parseInt((Math.random() * 6) + 1);
 	$("#dado4").attr("src", "Imagenes/Caras-dado/dado" + n + ".png");
 	document.getElementById("tirada4").value = n;
-        var fuerzapj = parseInt($("#infoFuerzaPj4").val()) + (n);
-	var vidapj = parseInt($("#infoVidaPj4").val());
-	var fuerzam = parseInt($("#infoFuerza").val()) + (n);
-	var vidam = parseInt($("#infoVida").val());
-	if (atacar(fuerzapj, vidam) <= 0) {
-		document.getElementById("infoVida").value = 0;
+        var fuerzapj = (per[4].fuerza) + n;
+        var fuerzam = (per[0].fuerza) + n
+	if (atacar(fuerzapj, per[0].vida) <= 0) {
+                per[0].vida = 0;
+		document.getElementById("infoVida").value = per[0].vida;
                 alert("Has ganado");
                 $("#divMonster").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
-                
 	} else {
-		result = atacar(fuerzapj, vidam);
-		document.getElementById("infoVida").value = result;
-	} if (atacar(fuerzam, vidapj) <= 0) {
-		document.getElementById("infoVidaPj4").value = 0;
+		result = atacar(fuerzapj, per[0].vida);
+                per[0].vida = result;
+		document.getElementById("infoVida").value = per[0].vida;
+	} if (atacar(fuerzam, per[4].vida) <= 0) {
+                per[4].vida = 0;
+		document.getElementById("infoVidaPj4").value = per[4].vida;
 		$("#divPj4").html("Jugador 4 ha muerto");
 	} else {
-		result = atacar(fuerzam, vidapj);
-		document.getElementById("infoVidaPj4").value = result;
+		result = atacar(fuerzam, per[4].vida);
+                per[4].vida = result;
+		document.getElementById("infoVidaPj4").value = per[4].vida;
 	}
+        
+        var muertos;
+        for (var i = 1; i < per.length; i++) {
+            if (per[1].vida === 0) {
+                muertos = true;
+            } else {
+                muerto = false;
+            }
+        }
+        if (muertos === true) {
+            $("#contenedorpj").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
+        }
 }
