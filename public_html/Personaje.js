@@ -1,10 +1,22 @@
 var per = [];
+var ordenIniciativa = [];
+var turnoActual = 0;
+var rondaActual = 1;
+var contadorEfecto = 0;
+var estadosCatalogo = [
+        { clave: "envenenado", texto: "Envenenado" },
+        { clave: "congelado", texto: "Congelado" },
+        { clave: "aturdido", texto: "Aturdido" },
+        { clave: "sangrando", texto: "Sangrando" }
+];
 
 function Personaje(nomb, vid, fuer) {
         this.nombre = nomb;
         this.fuerza = fuer;
         this.vida = vid;
         this.vidaMax = vid;
+        this.estados = {};
+        this.fase = 1;
 }
 
 function atacar(danio, vidaActual) {
@@ -24,10 +36,22 @@ function initGame() {
         genDivJugs(njug);
 
         $("#contenedorpj").on("click", ".btn-roll", handleRoll);
+        $("#contenedorpj").on("click", ".tag-estado", toggleEstado);
+        $("#divMonster").on("click", ".tag-estado", toggleEstado);
         $("#btnReiniciar").on("click", resetMatch);
+        $("#btnAvanzarTurno").on("click", avanzarTurno);
+        $("#btnRecalcularIniciativa").on("click", prepararIniciativa);
+        $("#btnRondaMas").on("click", function () { ajustarRonda(1); });
+        $("#btnRondaMenos").on("click", function () { ajustarRonda(-1); });
+        $("#btnEfectoMas").on("click", function () { ajustarEfecto(1); });
+        $("#btnEfectoMenos").on("click", function () { ajustarEfecto(-1); });
+        $("#btnRevelarFase").on("click", revelarFase);
 
         $("#log").html("<h3>Registro de combate</h3>");
         logAction("La batalla comienza. Lanza el dado de cada héroe para atacar.");
+        prepararIniciativa();
+        updateRoundDisplay();
+        updateEfectoDisplay();
 }
 
 function resetMatch() {
@@ -47,6 +71,8 @@ function genDivberserker(numJugadores) {
         info += "<span id='infoVidaTexto'>" + vidaBase + " / " + vidaBase + "</span>";
         info += "<label>Fuerza</label>";
         info += "<input type='text' readonly='readonly' name='infoFuerza' id='infoFuerza' value='" + fuerzaBase + "'>";
+        info += "<div class='estados-wrapper'><h4>Estados</h4>" + renderEstados(0) + "</div>";
+        info += "<div class='fase-box'><span id='infoFase'>Fase 1</span><button type='button' id='btnRevelarFase' class='pill'>Revelar fase</button></div>";
         info += "</div>";
         $("#divMonster").html(info);
         var jugador = new Personaje("Enemigo", vidaBase, fuerzaBase);
@@ -81,6 +107,7 @@ function genDivJugs(njugs) {
                 infoj += "Tirada: <span id='tirada" + index + "'>0</span>";
                 infoj += "</div>";
                 infoj += "</div>";
+                infoj += "<div class='estados-wrapper'><h4>Estados</h4>" + renderEstados(index) + "</div>";
                 infoj += "</div>";
                 document.getElementById("contenedorpj").innerHTML += infoj;
                 var jugador = new Personaje(nombre, vida, fuerza);
@@ -88,9 +115,19 @@ function genDivJugs(njugs) {
         }
 }
 
-function lanzarDado(selectorImagen, selectorTexto) {
-        var n = parseInt((Math.random() * 6) + 1);
-        if (selectorImagen) {
+function renderEstados(index) {
+        var html = "<div class='estados' data-index='" + index + "'>";
+        estadosCatalogo.forEach(function (estado) {
+                html += "<button type='button' class='tag-estado' data-estado='" + estado.clave + "' data-index='" + index + "'>" + estado.texto + "</button>";
+        });
+        html += "</div>";
+        return html;
+}
+
+function lanzarDado(selectorImagen, selectorTexto, caras) {
+        var carasTotales = caras || 6;
+        var n = parseInt((Math.random() * carasTotales) + 1);
+        if (selectorImagen && carasTotales === 6) {
                 $(selectorImagen).attr("src", "Imagenes/Caras-dado/dado" + n + ".png");
         }
         if (selectorTexto) {
@@ -134,6 +171,102 @@ function handleRoll(event) {
         if (jugadoresDerrotados()) {
                 finalizarCombate(false);
         }
+}
+
+function toggleEstado(e) {
+        var $boton = $(e.currentTarget);
+        var index = parseInt($boton.data("index"), 10);
+        var clave = $boton.data("estado");
+        var catalogo = estadosCatalogo.find(function (est) { return est.clave === clave; });
+        if (!per[index] || !catalogo) {
+                return;
+        }
+
+        var nuevoEstado = !per[index].estados[clave];
+        per[index].estados[clave] = nuevoEstado;
+        $boton.toggleClass("activo", nuevoEstado);
+
+        var objetivo = index === 0 ? "Berserker" : per[index].nombre;
+        var accion = nuevoEstado ? "sufre" : "se recupera de";
+        logAction(objetivo + " " + accion + " " + catalogo.texto.toLowerCase() + ".");
+}
+
+function prepararIniciativa() {
+        turnoActual = 0;
+        ordenIniciativa = per.map(function (pj, index) {
+                var tirada = lanzarDado(null, null, 20);
+                return {
+                        indice: index,
+                        nombre: index === 0 ? "Berserker" : pj.nombre,
+                        tirada: tirada,
+                        modificador: pj.fuerza,
+                        total: tirada + pj.fuerza
+                };
+        }).sort(function (a, b) { return b.total - a.total; });
+        var resumen = ordenIniciativa.map(function (item) { return item.nombre + " " + item.total; }).join(", ");
+        logAction("Orden de iniciativa: " + resumen + ".");
+        renderIniciativa();
+}
+
+function renderIniciativa() {
+        var html = "<h3>Iniciativa</h3><ol class='lista-iniciativa'>";
+        ordenIniciativa.forEach(function (item, idx) {
+                var activo = idx === turnoActual ? " class='activo'" : "";
+                html += "<li" + activo + ">" + item.nombre + " <span>(" + item.total + ")</span></li>";
+        });
+        html += "</ol>";
+        $("#iniciativa").html(html);
+        updateRoundDisplay();
+}
+
+function avanzarTurno() {
+        if (!ordenIniciativa.length) {
+                return;
+        }
+        turnoActual = (turnoActual + 1) % ordenIniciativa.length;
+        if (turnoActual === 0) {
+                rondaActual += 1;
+                updateRoundDisplay();
+                logAction("Comienza la ronda " + rondaActual + ".");
+                if (contadorEfecto > 0) {
+                        contadorEfecto -= 1;
+                        updateEfectoDisplay();
+                }
+        }
+        renderIniciativa();
+}
+
+function updateRoundDisplay() {
+        $("#contadorRonda").text(rondaActual);
+}
+
+function updateEfectoDisplay() {
+        $("#contadorEfecto").text(contadorEfecto + " rondas");
+}
+
+function ajustarRonda(delta) {
+        rondaActual = Math.max(1, rondaActual + delta);
+        updateRoundDisplay();
+}
+
+function ajustarEfecto(delta) {
+        contadorEfecto = Math.max(0, contadorEfecto + delta);
+        updateEfectoDisplay();
+}
+
+function revelarFase() {
+        if (!per[0]) {
+                return;
+        }
+        per[0].fase += 1;
+        per[0].fuerza += 2;
+        per[0].vidaMax += 20;
+        per[0].vida = Math.min(per[0].vida + 20, per[0].vidaMax);
+        $("#infoFuerza").val(per[0].fuerza);
+        $("#vidaEnemigo").attr("max", per[0].vidaMax);
+        updateMonsterDisplay();
+        $("#infoFase").text("Fase " + per[0].fase);
+        logAction("El Berserker revela la fase " + per[0].fase + " y aumenta su poder.", true);
 }
 
 function jugadoresDerrotados() {

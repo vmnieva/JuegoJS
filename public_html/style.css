@@ -198,7 +198,7 @@ progress::-moz-progress-bar {
     margin-top: 18px;
     display: flex;
     gap: 12px;
-    align-items: flex-start;
+    align-items: stretch;
     flex-wrap: wrap;
 }
 
@@ -209,6 +209,151 @@ progress::-moz-progress-bar {
 .muerto {
     filter: grayscale(0.8);
     opacity: 0.7;
+}
+
+.estados-wrapper {
+    margin-top: 12px;
+}
+
+.estados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag-estado {
+    border: 1px solid #334155;
+    background: rgba(14, 19, 36, 0.8);
+    color: #c7d2fe;
+    border-radius: 999px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.1s ease;
+}
+
+.tag-estado.activo {
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    color: #052e16;
+    border-color: #22c55e;
+}
+
+.fase-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    padding: 8px 10px;
+    border-radius: 10px;
+    color: #bbf7d0;
+}
+
+.pill {
+    border: 1px solid #334155;
+    background: rgba(51, 65, 85, 0.4);
+    color: #e2e8f0;
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+#turnos h3,
+#efectos h3 {
+    margin-top: 0;
+}
+
+.control-ronda,
+.control-efecto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.stepper {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(15, 24, 51, 0.8);
+    border: 1px solid #243057;
+    border-radius: 10px;
+    padding: 6px 8px;
+}
+
+.stepper button {
+    background: #0ea5e9;
+    color: #022c42;
+    font-weight: 800;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.stepper span {
+    min-width: 64px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.control-turno {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.lista-iniciativa {
+    list-style: decimal;
+    margin: 0;
+    padding-left: 20px;
+    display: grid;
+    gap: 6px;
+}
+
+.lista-iniciativa li {
+    background: rgba(15, 24, 51, 0.7);
+    border: 1px solid #243057;
+    padding: 6px 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lista-iniciativa li.activo {
+    border-color: #a855f7;
+    box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.35);
+}
+
+.control-efecto small {
+    display: block;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+.notas label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.notas textarea {
+    width: 100%;
+    min-height: 120px;
+    background: #0f1933;
+    color: #e5ecff;
+    border: 1px solid #243057;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.control-efecto .stepper span,
+.control-ronda .stepper span {
+    min-width: 80px;
 }
 
 @media (max-width: 900px) {

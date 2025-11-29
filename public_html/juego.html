@@ -26,6 +26,38 @@
                 </section>
                 <section id="panel">
                         <div id="log" class="card"></div>
+                        <div id="turnos" class="card">
+                                <h3>Turnos e iniciativa</h3>
+                                <div class="control-ronda">
+                                        <span>Ronda</span>
+                                        <div class="stepper">
+                                                <button type="button" id="btnRondaMenos" aria-label="Disminuir ronda">-</button>
+                                                <span id="contadorRonda">1</span>
+                                                <button type="button" id="btnRondaMas" aria-label="Aumentar ronda">+</button>
+                                        </div>
+                                </div>
+                                <div class="control-turno">
+                                        <button type="button" id="btnAvanzarTurno" class="primary">Siguiente turno</button>
+                                        <button type="button" id="btnRecalcularIniciativa" class="pill">Recalcular iniciativa</button>
+                                </div>
+                                <div id="iniciativa"></div>
+                        </div>
+                        <div id="efectos" class="card">
+                                <h3>Recursos y efectos</h3>
+                                <div class="control-efecto">
+                                        <span>Efecto en curso</span>
+                                        <div class="stepper">
+                                                <button type="button" id="btnEfectoMenos" aria-label="Restar rondas de efecto">-</button>
+                                                <span id="contadorEfecto">0 rondas</span>
+                                                <button type="button" id="btnEfectoMas" aria-label="Sumar rondas de efecto">+</button>
+                                        </div>
+                                        <small>Úsalo para concentraciones o temporizadores rápidos.</small>
+                                </div>
+                                <div class="notas">
+                                        <label for="campoNotas">Notas del DM</label>
+                                        <textarea id="campoNotas" rows="5" placeholder="Pistas, objetivos, recursos, música..."></textarea>
+                                </div>
+                        </div>
                         <button id="btnReiniciar" type="button" class="primary">Reiniciar partida</button>
                 </section>
         </div>
