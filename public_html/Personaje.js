@@ -40,7 +40,16 @@ function rellenarDivsJugs() {
 }
 
 function muertePersonaje(i) {
-	$("#divPj" + i).attr("hidden", "false");
+        $("#divPj" + i).attr("hidden", "false");
+}
+
+function todosLosJugadoresMuertos() {
+        for (var i = 1; i < per.length; i++) {
+                if (per[i].vida > 0) {
+                        return false;
+                }
+        }
+        return true;
 }
 
 function genDivberserker() {
@@ -121,15 +130,7 @@ function realizarTirada1() {
 		document.getElementById("infoVidaPj1").value = per[1].vida;
 	}
         
-        var muertos;
-        for (var i = 1; i < per.length; i++) {
-            if (per[1].vida === 0) {
-                muertos = true;
-            } else {
-                muerto = false;
-            }
-        }
-        if (muertos === true) {
+        if (todosLosJugadoresMuertos()) {
             $("#contenedorpj").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
         }
 }
@@ -160,15 +161,7 @@ function realizarTirada2() {
 		document.getElementById("infoVidaPj2").value = per[2].vida;
 	}
         
-        var muertos;
-        for (var i = 1; i < per.length; i++) {
-            if (per[1].vida === 0) {
-                muertos = true;
-            } else {
-                muerto = false;
-            }
-        }
-        if (muertos === true) {
+        if (todosLosJugadoresMuertos()) {
             $("#contenedorpj").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
         }
 }
@@ -199,15 +192,7 @@ function realizarTirada3() {
 		document.getElementById("infoVidaPj3").value = per[3].vida;
 	}
         
-        var muertos;
-        for (var i = 1; i < per.length; i++) {
-            if (per[1].vida === 0) {
-                muertos = true;
-            } else {
-                muerto = false;
-            }
-        }
-        if (muertos === true) {
+        if (todosLosJugadoresMuertos()) {
             $("#contenedorpj").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
         }
 }
@@ -238,15 +223,7 @@ function realizarTirada4() {
 		document.getElementById("infoVidaPj4").value = per[4].vida;
 	}
         
-        var muertos;
-        for (var i = 1; i < per.length; i++) {
-            if (per[1].vida === 0) {
-                muertos = true;
-            } else {
-                muerto = false;
-            }
-        }
-        if (muertos === true) {
+        if (todosLosJugadoresMuertos()) {
             $("#contenedorpj").html("<a style='text-decoration: none' href='index.html'><input type='button' value='Volver a Jugar'></a> <br/><br/>");
         }
 }
