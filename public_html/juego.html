@@ -1,38 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Fantasia Fatal VII</title>
-	<script src="jquery-3.3.1.js"></script>
-	<script src="Personaje.js"></script>
-	<script>
-		$(document).ready(function () {
-		                var njug = localStorage.getItem("njugs");
-		                genDivberserker();
-		                genDivJugs(njug);
-		                $('#dado1').click(realizarTirada1);
-		                $('#dado2').click(realizarTirada2);
-		                $('#dado3').click(realizarTirada3);
-		                $('#dado4').click(realizarTirada4);
-                                
-		            });
-	</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Fantasia Fatal VII</title>
+        <script src="jquery-3.3.1.js"></script>
+        <script src="Personaje.js"></script>
+        <script>
+                $(document).ready(function () {
+                        initGame();
+                });
+        </script>
 </head>
-
 <body>
-	<h1>Fantasia Fatal VII</h1>
-	<h2>Batalla Final</h2>
-        <br/>
-        <br/>
-        <div id="divMonster" ></div>
-        <br/>
-        <br/>
-        <br/>
-	<div id="contenedorpj"></div>
+        <div class="shell">
+                <header>
+                        <h1>Fantasia Fatal VII</h1>
+                        <h2>Batalla final</h2>
+                </header>
+                <section id="battlefield">
+                        <div id="divMonster" class="card"></div>
+                        <div id="contenedorpj"></div>
+                </section>
+                <section id="panel">
+                        <div id="log" class="card"></div>
+                        <button id="btnReiniciar" type="button" class="primary">Reiniciar partida</button>
+                </section>
+        </div>
 </body>
-
 </html>
