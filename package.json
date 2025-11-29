@@ -1,0 +1,8 @@
+{
+  "name": "juegojs",
+  "version": "1.0.0",
+  "description": "Juego en JavaScript con pruebas unitarias",
+  "scripts": {
+    "test": "node --test"
+  }
+}

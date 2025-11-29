@@ -59,7 +59,11 @@ function genDivberserker() {
 	info = info + "</fieldset>";
 	$("#divMonster").html(info);
 	var jugador = new Personaje("Enemigo", vida, fuerza);
-	per.push(jugador);
+        per.push(jugador);
+}
+
+if (typeof module !== 'undefined') {
+        module.exports = { Personaje, atacar };
 }
 
 function genDivJugs(njugs) {
